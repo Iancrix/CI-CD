@@ -12,6 +12,7 @@ jobs:
       - node/install-packages
       - run:
           command: cd frontend && npm run test
+          
   #build:
     #...
   deployProduction:
