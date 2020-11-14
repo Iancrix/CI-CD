@@ -57,6 +57,8 @@ workflows:
       - deployProduction:
           #requires:
           #  - build # only deploy once build job has completedalol
+          requires:
+            - request-testing
           filters:
             branches:
               only: master # only deploy on the master branch
