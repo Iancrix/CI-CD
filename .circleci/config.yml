@@ -1,5 +1,18 @@
 version: 2.1
+orbs:
+  node: circleci/node@4.1.0
 jobs:
+
+  test:
+    executor:
+      name: node/default
+      tag: '13.14'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: cd frontend && npm install && npm run test
+          
   #build:
     #...
   deployProduction:
@@ -36,6 +49,7 @@ workflows:
   build-and-deploy:
     jobs:
       #- buildLOL
+      - test
       - deployProduction:
           #requires:
           #  - build # only deploy once build job has completedalol
@@ -45,6 +59,8 @@ workflows:
       - deployDevelop:
           #requires:
           #  - build # only deploy once build job has completed
+          requires:
+            - test
           filters:
             branches:
               only: develop # only deploy on the develop branch
