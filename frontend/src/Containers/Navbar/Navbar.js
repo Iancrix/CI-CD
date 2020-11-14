@@ -64,7 +64,7 @@ class Navbar extends Component {
 			<nav>
 				<div className="nav-container">
 					<i className="logo-icon"></i>
-					<span className="logo-name">petworldCI/CD</span>
+					<span className="logo-name">petworld111</span>
 
 					<div className="nav-left-container">
 						<div className="toggle-nav-list">
