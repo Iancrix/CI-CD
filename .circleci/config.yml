@@ -50,9 +50,9 @@ workflows:
     jobs:
       #- build
       - request-testing:
-        type: approval
-        requires:
-          - test
+          type: approval
+          requires:
+            - test
       - deployProduction:
           #requires:
           #  - build # only deploy once build job has completedalol
