@@ -3,6 +3,16 @@ orbs:
   node: circleci/node@4.1.0
 jobs:
 
+  test:
+    executor:
+      name: node/default
+      tag: '13.14'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: cd frontend && npm run test
+          
   #build:
     #...
   deployProduction:
@@ -39,15 +49,7 @@ workflows:
   build-and-deploy:
     jobs:
       #- buildLOL
-      - test:
-          executor:
-            name: node/default
-            tag: '13.14'
-          steps:
-            - checkout
-            - node/install-packages
-            - run:
-                command: cd frontend && npm run test
+      - test
       - deployProduction:
           #requires:
           #  - build # only deploy once build job has completedalol
