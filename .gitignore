@@ -8,7 +8,7 @@ frontend/.pnp
 # testing
 frontend/coverage 
 
-# production
+# production!!
 frontend/build
 
 # misc
