@@ -5,12 +5,10 @@ const path = require("path");
 
 require("dotenv/config");
 
-//console.log(path.resolve(__dirname, "frontend", "build", "index.html"));
 const app = express();
 const PORT = process.env.PORT || 5000;
-const HOST = "0.0.0.0";
 
-// Middleware
+// Middleware lol
 app.use(cors());
 app.use(
 	express.urlencoded({
@@ -30,25 +28,28 @@ app.use("/rescuesRoute/", rescuesRoute);
 const productsRoute = require("./routes/products");
 app.use("/productsRoute/", productsRoute);
 
-// Serve static assets if in production
+const upload = require('./routes/upload');
+app.use('/upload', upload);
 
-if (process.env.NODE_ENV === "production") {
-	// Set static folder
-	app.use(express.static("./frontend/build"));
-	app.get("*", (req, res) => {
-		res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-	});
-}
+// Serve static assets if in production lollol
+
+//if (process.env.NODE_ENV === "production") {
+// Set static folderaacd 
+
+app.use(express.static("./frontend/build"));
+app.get("*", (req, res) => {
+	res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+});
 
 // DB Connection
 mongoose
-	.connect(process.env.MONGODB_URI, {
+	.connect("mongodb+srv://Iancrix:12345@cluster0-yfli3.gcp.mongodb.net/petworld?retryWrites=true&w=majority", {
 		useNewUrlParser: true,
 		useCreateIndex: true,
 		useUnifiedTopology: true,
 	})
 	.then(() => console.log("Connected to MongoDB"))
-	.catch(err => console.log("Connection REFUSED"));
+	.catch(err => err);
 
 // Server Init
-app.listen(PORT, HOST, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT/*, HOST*/, () => console.log(`Server started on port ${PORT}`));

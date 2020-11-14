@@ -11,6 +11,9 @@ import PetProfile from "./Containers/PetProfile/PetProfile";
 import Footer from "./Components/Footer/Footer";
 import About from "./Components/About/About";
 
+import ShowImages from "./Containers/ShowImages/ShowImages";
+import UploadImage from "./Containers/UploadImage/UploadImage";
+
 class App extends Component {
 	render() {
 		return (
@@ -71,9 +74,33 @@ class App extends Component {
 						</React.Fragment>
 					)}
 				/>
+
+				<Route
+					exact
+					path="/show"
+					render={props => (
+						<React.Fragment>
+							<Navbar />
+							<ShowImages />
+						</React.Fragment>
+					)}
+				/>
+
+				<Route
+					exact
+					path="/upload2"
+					render={props => (
+						<React.Fragment>
+							<Navbar />
+							<UploadImage />
+							<Footer />
+						</React.Fragment>
+					)}
+				/>
 			</div>
 		);
 	}
 }
 
 export default App;
+
