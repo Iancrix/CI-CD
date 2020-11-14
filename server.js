@@ -41,15 +41,5 @@ app.get("*", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 });
 
-// DB Connection
-mongoose
-	.connect("mongodb+srv://Iancrix:12345@cluster0-yfli3.gcp.mongodb.net/petworld?retryWrites=true&w=majority", {
-		useNewUrlParser: true,
-		useCreateIndex: true,
-		useUnifiedTopology: true,
-	})
-	.then(() => console.log("Connected to MongoDB"))
-	.catch(err => err);
-
 // Server Init
 app.listen(PORT/*, HOST*/, () => console.log(`Server started on port ${PORT}`));
