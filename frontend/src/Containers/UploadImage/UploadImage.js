@@ -10,7 +10,7 @@ class UploadImage extends Component {
     state = {
         selectedFile: null
     }
-        ;
+
     onClick = (e) => {
         if (this.state.selectedFile !== null) {
             var formData = new FormData();
@@ -35,12 +35,12 @@ class UploadImage extends Component {
     }
 
     render() {
-        return (
-            <div className="bg-image">
-                <input type="file" id="file-input" onChange={this.onChange} />
-                <br />
-                <button onClick={this.onClick} className="insert-button">Insert Image</button>
-            </div>
+        return (;
+        <div className="bg-image">
+            <input type="file" id="file-input" onChange={this.onChange} />
+            <br />
+            <button onClick={this.onClick} className="insert-button">Insert Image</button>
+        </div>
         )
     }
 }
