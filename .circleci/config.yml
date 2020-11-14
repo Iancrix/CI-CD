@@ -48,8 +48,12 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      #- buildLOL
+      #- build
       - test
+      - request-testing:
+          type: approval
+          requires:
+            - test
       - deployProduction:
           #requires:
           #  - build # only deploy once build job has completedalol
@@ -60,7 +64,7 @@ workflows:
           #requires:
           #  - build # only deploy once build job has completed
           requires:
-            - test
+            - request-testing
           filters:
             branches:
               only: develop # only deploy on the develop branch
