@@ -10,7 +10,7 @@ class UploadImage extends Component {
     state = {
         selectedFile: null
     }
-
+        ;
     onClick = (e) => {
         if (this.state.selectedFile !== null) {
             var formData = new FormData();
