@@ -49,6 +49,7 @@ workflows:
   build-and-deploy:
     jobs:
       #- build
+      - test
       - request-testing:
           type: approval
           requires:
